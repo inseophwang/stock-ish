@@ -8,11 +8,11 @@ const passport = require('passport')
 const session = require('express-session')
 
 let MongoStore = require('connect-mongo')(session)
-// require('./lib/passport')
+require('./lib/passport')
 require('dotenv').config()
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const usersRouter = require('./routes/users/userRoutes');
 
 const app = express();
 
