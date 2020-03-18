@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 require('../../lib/passport')
 
 router.get('/', (req, res) => {
-    res.render('index')
+    res.render('login')
 })
 
 router.get('/success', (req, res) => {
@@ -27,6 +27,10 @@ const myValidation = (req, res, next) => {
     }
     next()
 }
+
+router.get('/register', (req, res) => {
+    res.render('register')
+})
 
 router.post("/register", myValidation, (req, res) => {
     User.findOne({ email: req.body.email })
