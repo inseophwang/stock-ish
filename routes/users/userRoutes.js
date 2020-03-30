@@ -81,7 +81,7 @@ router.post("/register", myValidation, (req, res) => {
         req.session.destroy() 
         console.log(req.session)
         req.logout()
-        return res.redirect('/')
+        return res.render('logout')
     })
 
     router.get('/stocks', (req, res) => {
