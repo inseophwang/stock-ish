@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("./models/Users");
 const passport = require('passport')
 const bcrypt = require("bcryptjs");
+const fetch = require('node-fetch')
 require('../../lib/passport')
 
 router.get('/', (req, res) => {
@@ -31,6 +32,8 @@ const myValidation = (req, res, next) => {
 router.get('/register', (req, res) => {
     res.render('register')
 })
+
+
 
 router.post("/register", myValidation, (req, res) => {
     User.findOne({ email: req.body.email })
@@ -66,7 +69,7 @@ router.post("/register", myValidation, (req, res) => {
         .catch(err => res.status(418).json({ message: "Error!", err }));
     });
 
-    router.post('/login',
+    router.post('/',
         passport.authenticate('local-login', {
             successRedirect: '/users/success',
             failureRedirect: '/users/fail',
@@ -79,6 +82,24 @@ router.post("/register", myValidation, (req, res) => {
         console.log(req.session)
         req.logout()
         return res.redirect('/')
+    })
+
+    router.get('/stocks', (req, res) => {
+        res.render('stock')
+    })
+
+    router.get('/stocksearch', (req, res) => {
+        if(req.isAuthenticated()) {
+            const url = `https://financialmodelingprep.com/api/v3/quote/AAPL,FB,MSFT,AMZN,NVDA,GOOG,NFLX,ADBE,WORK,TSLA,BRK.A,JPM,VZ,DIS,BAC,AXP,XOM,BP,GM,BABA,UBER,TWTER,SBUX,EA`
+
+            fetch(url)
+            .then((stock) => stock.json())
+            .then((stock) => {
+                return res.render('stockSearch', {'stock': stock})
+            })
+            .catch((err) => console.log(err)
+            )
+        }
     })
 
 

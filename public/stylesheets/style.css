@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  
 }
 
 a {
@@ -8,6 +9,7 @@ a {
 }
 
 body {
+    background-image: url('../images/background.jpg');
     background-color:#fff;
     -webkit-font-smoothing: antialiased;
     font: normal 14px Roboto,arial,sans-serif;
@@ -48,8 +50,9 @@ body {
   html,body{
     height: 100%;
     margin: 0;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(149,199,20,1) 0%, rgba(0,212,255,1) 96%);
+    /* background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(149,199,20,1) 0%, rgba(0,212,255,1) 96%); */
+    background-image: url('../images/background.jpg');
 
 }
 
