@@ -54,10 +54,10 @@ router.post("/register", myValidation, (req, res) => {
             .save()
             .then(user => {
                 return req.login(user, (err) => {
+
                     if(err) {
                         return res.status(500).json({message: 'Server Error', err})
                     } else {
-                        console.log(req.session)
                         res.redirect('/users/success')
                     }
                 })
@@ -69,7 +69,7 @@ router.post("/register", myValidation, (req, res) => {
         .catch(err => res.status(418).json({ message: "Error!", err }));
     });
 
-    router.post('/',
+    router.post('/login',
         passport.authenticate('local-login', {
             successRedirect: '/users/success',
             failureRedirect: '/users/fail',
@@ -78,9 +78,8 @@ router.post("/register", myValidation, (req, res) => {
     )
 
     router.get('/logout', (req, res) => {
-        req.session.destroy() 
-        console.log(req.session)
         req.logout()
+        req.session.destroy() 
         return res.render('logout')
     })
 
