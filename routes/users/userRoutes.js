@@ -89,13 +89,15 @@ router.post("/register", myValidation, (req, res) => {
     })
 
     router.get('/stocksearch', (req, res) => {
+        console.log(req.user)
         if(req.isAuthenticated()) {
-            const url = `https://financialmodelingprep.com/api/v3/quote/AAPL,FB,MSFT,AMZN,NVDA,GOOG,NFLX,ADBE,WORK,TSLA,BRK.A,JPM,VZ,DIS,BAC,AXP,XOM,BP,GM,BABA,UBER,TWTER,SBUX,EA`
+            const url = `http://financialmodelingprep.com/api/v3/company/stock/list`
 
             fetch(url)
             .then((stock) => stock.json())
             .then((stock) => {
-                return res.render('stockSearch', {'stock': stock})
+                return res.render('stockSearch', {'stock': stock.symbolsList})
+            
             })
             .catch((err) => console.log(err)
             )

@@ -1,2 +1,3 @@
 const Stock = require('./models/Stock')
-const User  = require('../users/models/Users')
+const router = require('express').Router()
+
