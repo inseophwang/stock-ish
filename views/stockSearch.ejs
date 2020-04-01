@@ -8,7 +8,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <title>Document</title>
+    <title>Stock-ISH</title>
 </head>
 <% include ./partials/navbar %>
 <div class="container">
@@ -19,10 +19,10 @@
                 <div class="item">
                     <div class="pad15">
                     
-                        <p class="lead box"><%= stock[i].companyName %></p>
+                        <p class="lead box"><%= stock[i].companyName %></p> 
                         <p>$<%= stock[i].price %> </p>
                         <a
-                        href="/users/add/<%= stock._id %> "
+                        href="/users/add/<%= stock[i].companyName %> "
                         class="btn btn-suceess"
                         >Buy Now</a>
                     </div>

@@ -102,33 +102,40 @@ router.post("/register", myValidation, (req, res) => {
         }
     })
 
-    router.get('/add/:id', (req, res, products, next) => {
+    router.get('/watchlist', (req, res) => {
+        let product = req.user
+
+        res.render('myList', {watchList: product.watchList})
+    })
+
+    router.get('/add/:companyName', (req, res, next) => {
 
         console.log('hi')
         let product = req.user
         
-        // for (let order of products.stocks){
             product.watchList.push({
-                stock: order.stock
+                companyName: req.params.companyName
             })
-        // }
 
-        product.save((error, product) => {
-            if(error) return next(error)
 
-            callback(null, cart)
+        product.save()
+        .then(() => {
+            res.redirect('/users/watchlist')
+        }).catch(err => console.log(err))
+    })
+
+    router. get('/add/:price', (req, res, next) => {
+        let product = req.user
+        
+        product.watchList.push({
+            price: req.params.price
         })
-    },
-    (products) => {
-        products.update({
-            $set: {
-                stock: [],
-                total: 0
-            }
-        }, (error, updated) => {
-            if (updated) res.render('Updated!')
-        })
-    }
-    )
+
+
+    product.save()
+    .then(() => {
+        res.redirect('/users/watchlist')
+    }).catch(err => console.log(err))
+    })
 
 module.exports = router;
