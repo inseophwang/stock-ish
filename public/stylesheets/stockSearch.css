@@ -8,10 +8,23 @@
     
         .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }
 
+        .MultiCarousel {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .pad15{
+            border-radius: 25px;
+        }
+
+
+
         body {
             background-image: url('../images/background3.jpg');
         }
 
 .box{
-    color: red;
+    color: black;
 }
+

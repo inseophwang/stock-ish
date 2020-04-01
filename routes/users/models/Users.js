@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
     password: {type: String},
     watchList: [
         {
-            symbol: { type: String, uppercase: true, unique: true}
+            companyName: { type: String, unique: true}
     }]
 })
 

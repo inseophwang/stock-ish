@@ -88,14 +88,13 @@ router.post("/register", myValidation, (req, res) => {
     })
 
     router.get('/stocksearch', (req, res) => {
-        console.log(req.user)
         if(req.isAuthenticated()) {
-            const url = `http://financialmodelingprep.com/api/v3/company/stock/list`
+            const url = `https://financialmodelingprep.com/api/v3/stock/actives`
 
             fetch(url)
             .then((stock) => stock.json())
             .then((stock) => {
-                return res.render('stockSearch', {'stock': stock.symbolsList})
+                return res.render('stockSearch', {'stock': stock.mostActiveStock})
             
             })
             .catch((err) => console.log(err)
@@ -103,5 +102,33 @@ router.post("/register", myValidation, (req, res) => {
         }
     })
 
+    router.get('/add/:id', (req, res, products, next) => {
+
+        console.log('hi')
+        let product = req.user
+        
+        // for (let order of products.stocks){
+            product.watchList.push({
+                stock: order.stock
+            })
+        // }
+
+        product.save((error, product) => {
+            if(error) return next(error)
+
+            callback(null, cart)
+        })
+    },
+    (products) => {
+        products.update({
+            $set: {
+                stock: [],
+                total: 0
+            }
+        }, (error, updated) => {
+            if (updated) res.render('Updated!')
+        })
+    }
+    )
 
 module.exports = router;

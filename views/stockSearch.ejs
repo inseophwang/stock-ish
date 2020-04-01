@@ -18,11 +18,11 @@
             <div class="MultiCarousel-inner">
                 <div class="item">
                     <div class="pad15">
-                       
-                        <p class="lead box"><%= stock[i].symbol %></p>
+                    
+                        <p class="lead box"><%= stock[i].companyName %></p>
                         <p>$<%= stock[i].price %> </p>
                         <a
-                        href="#"
+                        href="/users/add/<%= stock._id %> "
                         class="btn btn-suceess"
                         >Buy Now</a>
                     </div>
