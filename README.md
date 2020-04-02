@@ -1,6 +1,8 @@
 # stock-ish
 An app to keep track of your investments
 
+https://inseop-stockish.herokuapp.com/
+
 Routes
 
 
