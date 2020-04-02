@@ -4,7 +4,7 @@ const User = require("./models/Users");
 const passport = require('passport')
 const bcrypt = require("bcryptjs");
 const fetch = require('node-fetch')
-const moment = require('moment')
+// const moment = require('moment')
 
 require('../../lib/passport')
 
@@ -112,6 +112,7 @@ router.post("/register", myValidation, (req, res) => {
 
     router.get('/add/:companyName/:price', (req, res, next) => {
         let product = req.user
+        
         product.watchList.push({
             companyName: req.params.companyName,
             price: req.params.price

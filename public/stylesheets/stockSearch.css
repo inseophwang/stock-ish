@@ -1,3 +1,13 @@
+body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.MultiCarousel.MultiCarousel {
+    justify-content: center;
+}
+
 .MultiCarousel { float: none; overflow: hidden; padding: 15px; width: 100%; position:relative; }
     .MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: none; }
         .MultiCarousel .MultiCarousel-inner .item { float: none;}
