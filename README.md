@@ -1,5 +1,5 @@
 # stock-ish
-Buy and sell stocks online
+An app to keep track of your investments
 
 Routes
 
@@ -15,8 +15,17 @@ Routes
   
   '/users/success' - Must be logged in to view this page. Shows user profile
   
+
+  '/users/stocksearch' - Must be logged in. Shows user available stocks to watch
+
+
+  '/users/watchlist' - Shows the user all the stocks they are watching
   
-  '/users/stocksearch' - Must be logged in. Shows user available stocks to buy
-  
-  
+
   '/users/logout' - Logs out User if they are logged in
+
+
+
+  API
+
+  https://financialmodelingprep.com/

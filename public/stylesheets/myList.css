@@ -10,6 +10,10 @@
     padding-left: 15px;
     border:0px;
 }
+
+.btn{
+    background-color: red;
+}
 .thumbnail .caption {
     padding: 9px;
     color: #333;
