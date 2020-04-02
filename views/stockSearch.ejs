@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/stockSearch.css">
-    <link rel="stylesheet" href="/stylesheets/stockSearch.js">
+    <link rel="stylesheet" href="/javascripts/stockSearch.js">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -22,9 +22,9 @@
                         <p class="lead box"><%= stock[i].companyName %></p> 
                         <p>$<%= stock[i].price %> </p>
                         <a
-                        href="/users/add/<%= stock[i].companyName %> "
+                        href="/users/add/<%= stock[i].companyName %>/<%= stock[i].price %>  "
                         class="btn btn-suceess"
-                        >Buy Now</a>
+                        >Add to List!</a>
                     </div>
                 </div>
                 </div>

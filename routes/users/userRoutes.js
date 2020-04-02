@@ -4,6 +4,8 @@ const User = require("./models/Users");
 const passport = require('passport')
 const bcrypt = require("bcryptjs");
 const fetch = require('node-fetch')
+const moment = require('moment')
+
 require('../../lib/passport')
 
 router.get('/', (req, res) => {
@@ -108,34 +110,25 @@ router.post("/register", myValidation, (req, res) => {
         res.render('myList', {watchList: product.watchList})
     })
 
-    router.get('/add/:companyName', (req, res, next) => {
-
-        console.log('hi')
+    router.get('/add/:companyName/:price', (req, res, next) => {
         let product = req.user
-        
-            product.watchList.push({
-                companyName: req.params.companyName
-            })
-
-
+        product.watchList.push({
+            companyName: req.params.companyName,
+            price: req.params.price
+        })
         product.save()
         .then(() => {
             res.redirect('/users/watchlist')
         }).catch(err => console.log(err))
     })
 
-    router. get('/add/:price', (req, res, next) => {
+    router.get('/delete/:companyName', (req, res) => {
         let product = req.user
-        
-        product.watchList.push({
-            price: req.params.price
-        })
-
-
-    product.save()
-    .then(() => {
-        res.redirect('/users/watchlist')
-    }).catch(err => console.log(err))
+        product.watchList.remove({companyName: req.params.companyName})
+        product.save()
+        .then(() => {
+            res.redirect('/users/watchlist')
+        }).catch(err => console.log(err))
     })
 
 module.exports = router;
